@@ -1,11 +1,18 @@
 import Hero from '@/components/Hero'
 import Section from '@/components/Section'
 import ProjectCard from '@/components/ProjectCard'
-import { projects } from '@/data/projects'
 import Link from 'next/link'
+import { ROUTES, APP_CONFIG } from '@/lib/constants'
+import { projects } from '@/data/projects'
 
+/**
+ * Homepage component.
+ * Displays hero section and featured projects.
+ */
 export default function HomePage() {
-  const featuredProjects = projects.filter((p) => p.featured).slice(0, 3)
+  const featuredProjects = projects
+    .filter((project) => project.featured)
+    .slice(0, APP_CONFIG.MAX_FEATURED_PROJECTS)
 
   return (
     <>
@@ -24,7 +31,7 @@ export default function HomePage() {
         </div>
         <div className="mt-12 text-center">
           <Link
-            href="/projects"
+            href={ROUTES.PROJECTS}
             className="inline-flex items-center text-sm font-semibold text-blue transition-colors hover:text-blue-light"
           >
             View All Projects

@@ -1,23 +1,73 @@
 'use client'
 
+import { memo, useCallback, useMemo } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Project } from '@/data/projects'
 import TechBadge from './TechBadge'
+import { APP_CONFIG } from '@/lib/constants'
 
 interface ProjectCardProps {
   project: Project
   index?: number
+  variant?: 'default' | 'featured'
+  onSelect?: (project: Project) => void
 }
 
-export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
+/**
+ * Displays a project card with title, summary, and tech stack.
+ * Used in project grid and featured sections.
+ *
+ * Implements CLAUDE.md component structure:
+ * - Computed values first
+ * - Event handlers second
+ * - Render last
+ *
+ * @example
+ * <ProjectCard
+ *   project={project}
+ *   variant="featured"
+ *   onSelect={handleProjectSelect}
+ * />
+ */
+function ProjectCard({
+  project,
+  index = 0,
+  variant = 'default',
+  onSelect
+}: ProjectCardProps) {
+  // 1. Computed values
+  const techToShow = useMemo(
+    () => project.tech.slice(0, APP_CONFIG.MAX_TECH_BADGES_DISPLAY),
+    [project.tech]
+  )
+
+  const remainingCount = useMemo(
+    () => Math.max(0, project.tech.length - APP_CONFIG.MAX_TECH_BADGES_DISPLAY),
+    [project.tech.length]
+  )
+
+  // 2. Event handlers
+  const handleCardClick = useCallback(() => {
+    onSelect?.(project)
+  }, [project, onSelect])
+
+  const handleLinkClick = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation()
+    },
+    []
+  )
+
+  // 4. Render
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -5 }}
+      transition={{ duration: APP_CONFIG.ANIMATION_DELAYS.DEFAULT, delay: index * APP_CONFIG.ANIMATION_DELAYS.STAGGER }}
+      whileHover={{ y: APP_CONFIG.ANIMATION_DELAYS.HOVER_LIFT }}
       className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-bg-secondary transition-colors hover:border-blue/50"
+      onClick={handleCardClick}
     >
       <Link href={`/projects/${project.slug}`} className="flex flex-1 flex-col p-6">
         <h3 className="text-xl font-semibold text-text transition-colors group-hover:text-blue">
@@ -25,11 +75,11 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         </h3>
         <p className="mt-3 line-clamp-2 text-sm text-text-muted">{project.summary}</p>
         <div className="mt-4 flex flex-wrap gap-2">
-          {project.tech.slice(0, 3).map((tech) => (
+          {techToShow.map((tech) => (
             <TechBadge key={tech} name={tech} />
           ))}
-          {project.tech.length > 3 && (
-            <span className="text-xs text-text-dim">+{project.tech.length - 3} more</span>
+          {remainingCount > 0 && (
+            <span className="text-xs text-text-dim">+{remainingCount} more</span>
           )}
         </div>
       </Link>
@@ -41,7 +91,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-text-muted transition-colors hover:text-blue"
-              onClick={(e) => e.stopPropagation()}
+              onClick={handleLinkClick}
             >
               Live Demo →
             </a>
@@ -51,7 +101,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-text-muted transition-colors hover:text-blue"
-            onClick={(e) => e.stopPropagation()}
+            onClick={handleLinkClick}
           >
             View Code →
           </a>
@@ -60,3 +110,10 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
     </motion.article>
   )
 }
+
+// Memoize component to prevent unnecessary re-renders
+export default memo(ProjectCard, (prev, next) =>
+  prev.project.id === next.project.id &&
+  prev.index === next.index &&
+  prev.variant === next.variant
+)

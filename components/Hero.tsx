@@ -1,8 +1,13 @@
 'use client'
 
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { ROUTES } from '@/lib/constants'
 
+/**
+ * Animation variants for staggered entrance
+ */
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -24,7 +29,19 @@ const itemVariants = {
   },
 }
 
-export default function Hero() {
+/**
+ * Hero section component for the homepage.
+ * Features animated entrance with call-to-action buttons.
+ *
+ * Implements:
+ * - Framer Motion staggered animations
+ * - Responsive typography
+ * - Gradient background effect
+ *
+ * @example
+ * <Hero />
+ */
+function Hero() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-32">
       <motion.div
@@ -50,13 +67,13 @@ export default function Hero() {
           </motion.p>
           <motion.div variants={itemVariants} className="mt-10 flex items-center gap-x-6">
             <Link
-              href="/projects"
+              href={ROUTES.PROJECTS}
               className="rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-dark focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2 focus:ring-offset-bg"
             >
               View Projects
             </Link>
             <Link
-              href="/contact"
+              href={ROUTES.CONTACT}
               className="text-sm font-semibold leading-6 text-text transition-colors hover:text-blue"
             >
               Get in Touch <span aria-hidden="true">→</span>
@@ -64,9 +81,14 @@ export default function Hero() {
           </motion.div>
         </div>
       </motion.div>
-      <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+      <div
+        className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+        aria-hidden="true"
+      >
         <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-blue to-blue-light opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
       </div>
     </section>
   )
 }
+
+export default memo(Hero)

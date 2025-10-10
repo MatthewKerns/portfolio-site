@@ -15,7 +15,7 @@ export default function AboutPage() {
 
         <div className="mt-8 space-y-6 text-text-muted">
           <p className="text-lg leading-relaxed">
-            I'm a Senior Software Engineer with a passion for building scalable, maintainable
+            I&apos;m a Senior Software Engineer with a passion for building scalable, maintainable
             systems that solve real-world problems. My expertise spans cloud architecture,
             microservices, and modern web applications.
           </p>

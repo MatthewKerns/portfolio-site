@@ -3,9 +3,15 @@ import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ErrorBoundary from '@/components/ErrorBoundary'
 import { siteConfig } from '@/lib/seo'
+import { CONTACT_INFO } from '@/lib/constants'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+})
 
 export const metadata: Metadata = {
   title: {
@@ -37,7 +43,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: '@username',
+    creator: CONTACT_INFO.TWITTER,
   },
   robots: {
     index: true,
@@ -52,6 +58,10 @@ export const metadata: Metadata = {
   },
 }
 
+/**
+ * Root layout component.
+ * Wraps all pages with common structure and error boundary.
+ */
 export default function RootLayout({
   children,
 }: {
@@ -63,14 +73,19 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col bg-bg text-text antialiased`}>
-        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 rounded bg-blue px-4 py-2 text-sm font-medium text-white">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 z-50 rounded bg-blue px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2"
+        >
           Skip to content
         </a>
-        <Header />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <ErrorBoundary>
+          <Header />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </ErrorBoundary>
       </body>
     </html>
   )
