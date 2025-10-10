@@ -2,7 +2,7 @@ import Section from '@/components/Section'
 
 export const metadata = {
   title: 'Now',
-  description: 'What I'm focused on at this point in my life.',
+  description: 'What I am focused on at this point in my life.',
 }
 
 export default function NowPage() {
@@ -11,7 +11,7 @@ export default function NowPage() {
       <div className="mx-auto max-w-3xl">
         <h1 className="text-4xl font-bold text-text sm:text-5xl">Now</h1>
         <p className="mt-4 text-lg text-text-muted">
-          What I'm focused on at this point in my life. Last updated {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.
+          What I&apos;m focused on at this point in my life. Last updated {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.
         </p>
 
         <div className="prose prose-invert mt-12 max-w-none">
