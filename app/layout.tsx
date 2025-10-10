@@ -6,7 +6,6 @@ import Footer from '@/components/Footer'
 import ErrorBoundary from '@/components/ErrorBoundary'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import { siteConfig } from '@/lib/seo'
-import { CONTACT_INFO } from '@/lib/constants'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -38,13 +37,6 @@ export const metadata: Metadata = {
         alt: siteConfig.name,
       },
     ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [siteConfig.ogImage],
-    creator: CONTACT_INFO.TWITTER,
   },
   robots: {
     index: true,

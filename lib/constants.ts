@@ -33,7 +33,6 @@ export const CONTACT_INFO = {
   EMAIL: process.env.NEXT_PUBLIC_EMAIL || 'email@example.com',
   GITHUB: process.env.NEXT_PUBLIC_GITHUB || 'https://github.com/username',
   LINKEDIN: process.env.NEXT_PUBLIC_LINKEDIN || 'https://linkedin.com/in/username',
-  TWITTER: process.env.NEXT_PUBLIC_TWITTER || '@username',
 } as const
 
 export const ROUTES = {
