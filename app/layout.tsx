@@ -4,6 +4,7 @@ import '@/styles/globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ErrorBoundary from '@/components/ErrorBoundary'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 import { siteConfig } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/constants'
 
@@ -73,6 +74,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col bg-bg text-text antialiased`}>
+        <GoogleAnalytics />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 z-50 rounded bg-blue px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2"
