@@ -1,0 +1,82 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build production
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      # Option 1: Deploy to Amplify using AWS CLI
+      # Uncomment and configure when you have AWS credentials
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v2
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: us-east-1
+
+      # - name: Deploy to Amplify
+      #   run: |
+      #     zip -r deploy.zip .next public package.json package-lock.json
+      #     aws s3 cp deploy.zip s3://${{ secrets.DEPLOY_BUCKET }}/deploy-${{ github.sha }}.zip
+      #     aws amplify start-deployment \
+      #       --app-id ${{ secrets.AMPLIFY_APP_ID }} \
+      #       --branch-name main \
+      #       --source-url s3://${{ secrets.DEPLOY_BUCKET }}/deploy-${{ github.sha }}.zip
+
+      # Option 2: Simple notification for now
+      - name: Deployment Ready
+        run: |
+          echo "✅ Build successful and ready for deployment!"
+          echo "📦 Build artifacts created"
+          echo "🚀 To deploy: Connect this repo to AWS Amplify Console"

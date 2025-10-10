@@ -1,0 +1,72 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+}
+
+export default function Hero() {
+  return (
+    <section className="relative overflow-hidden py-20 sm:py-32">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="mx-auto max-w-7xl px-6 lg:px-8"
+      >
+        <div className="max-w-3xl">
+          <motion.h1
+            variants={itemVariants}
+            className="text-5xl font-bold tracking-tight text-text sm:text-6xl"
+          >
+            Building the future,{' '}
+            <span className="text-blue">one commit at a time</span>
+          </motion.h1>
+          <motion.p
+            variants={itemVariants}
+            className="mt-6 text-lg leading-8 text-text-muted"
+          >
+            Senior Software Engineer specializing in cloud architecture, scalable systems, and
+            modern web applications. Passionate about clean code and exceptional user experiences.
+          </motion.p>
+          <motion.div variants={itemVariants} className="mt-10 flex items-center gap-x-6">
+            <Link
+              href="/projects"
+              className="rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-dark focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2 focus:ring-offset-bg"
+            >
+              View Projects
+            </Link>
+            <Link
+              href="/contact"
+              className="text-sm font-semibold leading-6 text-text transition-colors hover:text-blue"
+            >
+              Get in Touch <span aria-hidden="true">→</span>
+            </Link>
+          </motion.div>
+        </div>
+      </motion.div>
+      <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+        <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-blue to-blue-light opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
+      </div>
+    </section>
+  )
+}
