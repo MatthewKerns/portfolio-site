@@ -3,6 +3,7 @@
 import { memo } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ROUTES } from '@/lib/constants'
 
 /**
@@ -50,7 +51,8 @@ function Hero() {
         animate="visible"
         className="mx-auto max-w-7xl px-6 lg:px-8"
       >
-        <div className="max-w-3xl">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+          <div className="max-w-3xl">
           <motion.h1
             variants={itemVariants}
             className="text-5xl font-bold tracking-tight text-text sm:text-6xl"
@@ -62,8 +64,7 @@ function Hero() {
             variants={itemVariants}
             className="mt-6 text-lg leading-8 text-text-muted"
           >
-            Senior Software Engineer specializing in cloud architecture, scalable systems, and
-            modern web applications. Passionate about clean code and exceptional user experiences.
+            I'm Matthew Kerns, a software engineer focused on building scalable, cloud-native applications. I'm passionate about writing clean code that solves real problems and creates great user experiences.
           </motion.p>
           <motion.div variants={itemVariants} className="mt-10 flex items-center gap-x-6">
             <Link
@@ -78,6 +79,23 @@ function Hero() {
             >
               Get in Touch <span aria-hidden="true">→</span>
             </Link>
+          </motion.div>
+          </div>
+          <motion.div
+            variants={itemVariants}
+            className="relative flex justify-center lg:justify-end"
+          >
+            <div className="relative h-64 w-64 sm:h-72 sm:w-72">
+              <Image
+                src="/images/profile-hq.jpg"
+                alt="Profile picture"
+                fill
+                priority
+                quality={100}
+                sizes="(max-width: 640px) 256px, 288px"
+                className="rounded-full object-cover shadow-2xl ring-4 ring-blue/20"
+              />
+            </div>
           </motion.div>
         </div>
       </motion.div>
