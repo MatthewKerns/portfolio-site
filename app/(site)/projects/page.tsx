@@ -16,6 +16,12 @@ export default function ProjectsPage() {
           A collection of production-quality applications demonstrating expertise in cloud
           architecture, microservices, and modern web development.
         </p>
+        <p className="mt-3 max-w-3xl text-base text-text-muted italic">
+          These projects showcase real expertise from 7+ years of professional software development.
+          Some are direct implementations I&apos;ve built, others demonstrate capabilities I&apos;ve applied
+          in production systems at Amazon and my own companies. Happy to discuss technical details,
+          architecture decisions, and real-world applications during an interview.
+        </p>
       </div>
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
