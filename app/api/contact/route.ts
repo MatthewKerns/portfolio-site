@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { ContactFormSchema } from '@/hooks/useContactForm'
 import { z } from 'zod'
+import { Resend } from 'resend'
+
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 /**
  * Rate limiting store (in-memory for simplicity).
@@ -75,19 +78,33 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const validated = ContactFormSchema.parse(body)
 
-    // TODO: Send email or save to database
-    // For now, just log (in production, integrate with email service)
-    if (process.env.NODE_ENV === 'development') {
-      console.log('Contact form submission:', validated)
-    }
+    // Send email using Resend
+    try {
+      await resend.emails.send({
+        from: 'Portfolio Contact <onboarding@resend.dev>', // Resend verified sender
+        to: '12kernsmatthew@gmail.com',
+        replyTo: validated.email,
+        subject: `Portfolio Contact: ${validated.name}`,
+        text: `
+Name: ${validated.name}
+Email: ${validated.email}
 
-    // In production, you would do something like:
-    // await sendEmail({
-    //   to: process.env.CONTACT_EMAIL,
-    //   subject: `Contact from ${validated.name}`,
-    //   text: validated.message,
-    //   replyTo: validated.email,
-    // })
+Message:
+${validated.message}
+        `.trim(),
+        html: `
+<h2>New Contact Form Submission</h2>
+<p><strong>Name:</strong> ${validated.name}</p>
+<p><strong>Email:</strong> ${validated.email}</p>
+<h3>Message:</h3>
+<p>${validated.message.replace(/\n/g, '<br>')}</p>
+        `.trim(),
+      })
+    } catch (emailError) {
+      console.error('Failed to send email:', emailError)
+      // Log but don't fail the request - user shouldn't know if email failed
+      // In production, you might want to save to database as backup
+    }
 
     return NextResponse.json(
       { message: 'Message sent successfully' },
