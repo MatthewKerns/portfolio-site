@@ -15,14 +15,16 @@ export default function AboutPage() {
 
         <div className="mt-8 space-y-6 text-text-muted">
           <p className="text-lg leading-relaxed">
-            I&apos;m a Senior Software Engineer with a passion for building scalable, maintainable
-            systems that solve real-world problems. My expertise spans cloud architecture,
-            microservices, and modern web applications.
+            Software Development Engineer with 7+ years of experience designing and delivering scalable
+            software solutions across e-commerce, cloud systems, and AI-powered automation. Skilled in
+            AWS, React, Node.js, and database work in SQL, with strong software development best practices
+            foundations in OOP, design patterns, and developing clean, observable software.
           </p>
           <p className="text-lg leading-relaxed">
-            I believe in writing clean, testable code that follows SOLID principles and design
-            patterns. Every line of code should have a purpose, every component should have clear
-            boundaries, and every system should be built to evolve.
+            Recently focused on AI chat programming using n8n, LangGraph, and LangChain. I commit to
+            learning whatever frameworks or systems are required to deliver real business value and
+            high-quality software. Every line of code should have a purpose, every component should have
+            clear boundaries, and every system should be built to evolve.
           </p>
         </div>
 
@@ -50,14 +52,17 @@ export default function AboutPage() {
         <div className="mt-16">
           <h2 className="text-2xl font-semibold text-text">Journey</h2>
           <div className="mt-8 space-y-8">
-            {timeline.map((item) => (
-              <div key={item.year} className="relative pl-8">
+            {timeline.map((item, index) => (
+              <div key={`${item.year}-${index}`} className="relative pl-8">
                 <div className="absolute left-0 top-1 h-2 w-2 rounded-full bg-blue" />
-                <div className="absolute left-[3px] top-3 h-full w-[2px] bg-border" />
+                <div className="absolute left-[3px] top-3 h-full w-[2px] bg-border last:bg-transparent" />
                 <div>
                   <span className="text-sm font-medium text-blue">{item.year}</span>
                   <h3 className="mt-1 font-semibold text-text">{item.title}</h3>
-                  <p className="mt-1 text-text-muted">{item.description}</p>
+                  {item.company && (
+                    <p className="text-sm text-text-muted">{item.company}</p>
+                  )}
+                  <p className="mt-2 text-text-muted">{item.description}</p>
                 </div>
               </div>
             ))}
