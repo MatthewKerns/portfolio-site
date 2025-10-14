@@ -2,31 +2,10 @@
 
 import { useState, useCallback } from 'react'
 import { z } from 'zod'
-import { APP_CONFIG } from '@/lib/constants'
+import { ContactFormSchema, type ContactFormData } from '@/lib/contact-schema'
 
-/**
- * Form validation schema using Zod.
- * Ensures all contact form inputs meet requirements.
- */
-export const ContactFormSchema = z.object({
-  name: z
-    .string()
-    .min(APP_CONFIG.FORM_LIMITS.NAME_MIN, 'Name is required')
-    .max(APP_CONFIG.FORM_LIMITS.NAME_MAX, 'Name is too long')
-    .trim(),
-  email: z
-    .string()
-    .email('Please enter a valid email')
-    .toLowerCase()
-    .trim(),
-  message: z
-    .string()
-    .min(APP_CONFIG.FORM_LIMITS.MESSAGE_MIN, 'Message must be at least 10 characters')
-    .max(APP_CONFIG.FORM_LIMITS.MESSAGE_MAX, 'Message is too long')
-    .trim(),
-})
-
-export type ContactFormData = z.infer<typeof ContactFormSchema>
+// Re-export for backwards compatibility
+export type { ContactFormData }
 
 export interface FormStatus {
   type: 'success' | 'error' | 'idle'

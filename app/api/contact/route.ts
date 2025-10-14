@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { ContactFormSchema } from '@/hooks/useContactForm'
+import { ContactFormSchema } from '@/lib/contact-schema'
 import { z } from 'zod'
 import { Resend } from 'resend'
 
