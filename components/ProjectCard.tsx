@@ -69,6 +69,11 @@ function ProjectCard({
       className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-bg-secondary transition-colors hover:border-blue/50"
       onClick={handleCardClick}
     >
+      {project.wip && (
+        <div className="absolute right-3 top-3 z-10 rounded-md bg-blue/20 px-2 py-1 text-xs font-medium text-blue backdrop-blur-sm">
+          Work in Progress
+        </div>
+      )}
       <Link href={`/projects/${project.slug}`} className="flex flex-1 flex-col p-6">
         <h3 className="text-xl font-semibold text-text transition-colors group-hover:text-blue">
           {project.title}

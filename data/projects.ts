@@ -7,6 +7,7 @@ export interface Project {
   tech: string[]
   image: string
   featured?: boolean
+  wip?: boolean
   links: {
     demo?: string
     repo: string
@@ -23,6 +24,7 @@ export const projects: Project[] = [
     tech: ['Next.js', 'TypeScript', 'TailwindCSS', 'Framer Motion', 'AWS Amplify'],
     image: '/images/portfolio.jpg',
     featured: true,
+    wip: true,
     links: {
       demo: 'https://portfolio.amplifyapp.com',
       repo: 'https://github.com/username/portfolio',
@@ -37,6 +39,7 @@ export const projects: Project[] = [
     tech: ['Spring Boot', 'Java', 'Docker', 'AWS EC2', 'GitHub Actions'],
     image: '/images/spring-boot.jpg',
     featured: true,
+    wip: true,
     links: {
       demo: 'https://api.example.com/health',
       repo: 'https://github.com/username/spring-boot-server',
@@ -51,6 +54,7 @@ export const projects: Project[] = [
     tech: ['AWS Lambda', 'TypeScript', 'AWS CDK', 'API Gateway'],
     image: '/images/lambda.jpg',
     featured: true,
+    wip: true,
     links: {
       repo: 'https://github.com/username/lambda-demo',
     },
@@ -63,6 +67,7 @@ export const projects: Project[] = [
     description: 'Event-driven architecture demonstrating decoupled microservices communication.',
     tech: ['AWS SNS', 'AWS SQS', 'Lambda', 'CDK', 'TypeScript'],
     image: '/images/event-driven.jpg',
+    wip: true,
     links: {
       repo: 'https://github.com/username/event-driven-demo',
     },
@@ -75,6 +80,7 @@ export const projects: Project[] = [
     description: 'AI-powered workflow automation with safety constraints and cost optimization.',
     tech: ['n8n', 'LangGraph', 'OpenAI API', 'PostgreSQL', 'Next.js'],
     image: '/images/ai-workflow.jpg',
+    wip: true,
     links: {
       demo: 'https://ai-workflow.example.com',
       repo: 'https://github.com/username/ai-workflow',
@@ -88,6 +94,7 @@ export const projects: Project[] = [
     description: 'Enterprise automation solution built with scalability and maintainability in focus.',
     tech: ['Node.js', 'TypeScript', 'PostgreSQL', 'Redis', 'Docker'],
     image: '/images/infinityvault.jpg',
+    wip: true,
     links: {
       repo: 'https://github.com/username/infinityvault-simplified',
     },
