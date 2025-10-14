@@ -78,6 +78,16 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const validated = ContactFormSchema.parse(body)
 
+    // Check if Resend API key is configured
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not configured')
+      // Return success to user but log the error
+      return NextResponse.json(
+        { message: 'Message sent successfully' },
+        { status: 200 }
+      )
+    }
+
     // Send email using Resend
     try {
       const result = await resend.emails.send({
@@ -102,8 +112,15 @@ ${validated.message}
       })
 
       console.log('Email sent successfully:', result)
-    } catch (emailError) {
-      console.error('Failed to send email:', emailError)
+    } catch (emailError: any) {
+      // Log the actual error for debugging
+      console.error('Resend API Error:', {
+        message: emailError?.message,
+        statusCode: emailError?.statusCode,
+        name: emailError?.name,
+        error: emailError,
+      })
+
       // Still return success to user to prevent information disclosure
       // In production, you might want to save to database as backup
     }
@@ -132,6 +149,7 @@ ${validated.message}
     // Log error but don't expose details to client
     console.error('Contact form error:', error)
 
+    // Always return JSON, never throw uncaught errors
     return NextResponse.json(
       { message: 'An error occurred. Please try again later.' },
       { status: 500 }
