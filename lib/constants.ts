@@ -38,6 +38,7 @@ export const CONTACT_INFO = {
 export const ROUTES = {
   HOME: '/',
   PROJECTS: '/projects',
+  PHILOSOPHY: '/philosophy',
   ABOUT: '/about',
   NOW: '/now',
   CONTACT: '/contact',

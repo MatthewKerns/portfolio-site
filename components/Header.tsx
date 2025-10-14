@@ -13,6 +13,7 @@ import { ROUTES } from '@/lib/constants'
 const navigation = [
   { name: 'Home', href: ROUTES.HOME },
   { name: 'Projects', href: ROUTES.PROJECTS },
+  { name: 'Philosophy', href: ROUTES.PHILOSOPHY },
   { name: 'About', href: ROUTES.ABOUT },
   { name: 'Now', href: ROUTES.NOW },
   { name: 'Contact', href: ROUTES.CONTACT },
