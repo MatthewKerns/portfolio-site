@@ -3,13 +3,20 @@ import { ContactFormSchema } from '@/hooks/useContactForm'
 import { z } from 'zod'
 import { Resend } from 'resend'
 
+// Try multiple environment variable names for AWS Amplify compatibility
+const RESEND_API_KEY =
+  process.env.RESEND_API_KEY ||
+  process.env._LIVE_RESEND_API_KEY ||
+  ''
+
 // Validate required environment variables at startup
-if (!process.env.RESEND_API_KEY) {
+if (!RESEND_API_KEY) {
   console.error('[Contact API] FATAL: RESEND_API_KEY environment variable is not set')
+  console.error('[Contact API] Available env vars:', Object.keys(process.env).filter(k => k.includes('RESEND') || k.includes('LIVE')))
   console.error('[Contact API] Email functionality will not work until this is configured')
 }
 
-const resend = new Resend(process.env.RESEND_API_KEY || '')
+const resend = new Resend(RESEND_API_KEY)
 
 /**
  * Rate limiting store (in-memory for simplicity).
@@ -85,7 +92,7 @@ export async function POST(request: NextRequest) {
     const validated = ContactFormSchema.parse(body)
 
     // Check if Resend API key is configured
-    if (!process.env.RESEND_API_KEY) {
+    if (!RESEND_API_KEY) {
       console.error('[Contact API] Email send attempted but RESEND_API_KEY is not configured')
       console.error('[Contact API] Submission details:', {
         name: validated.name,
