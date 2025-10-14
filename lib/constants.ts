@@ -42,7 +42,6 @@ export const ROUTES = {
   ABOUT: '/about',
   NOW: '/now',
   CONTACT: '/contact',
-  RESUME: '/resume.pdf',
 } as const
 
 export const EXTERNAL_LINKS = {

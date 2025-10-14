@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import Link from 'next/link'
-import { CONTACT_INFO, ROUTES } from '@/lib/constants'
+import { CONTACT_INFO } from '@/lib/constants'
 
 /**
  * Site footer with copyright and social links.
@@ -44,14 +44,6 @@ function Footer() {
               aria-label="Send email"
             >
               Email
-            </Link>
-            <Link
-              href={ROUTES.RESUME}
-              target="_blank"
-              className="text-text-muted transition-colors hover:text-blue"
-              aria-label="Download resume"
-            >
-              Resume
             </Link>
           </nav>
         </div>

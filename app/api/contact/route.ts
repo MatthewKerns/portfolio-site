@@ -3,7 +3,13 @@ import { ContactFormSchema } from '@/hooks/useContactForm'
 import { z } from 'zod'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Validate required environment variables at startup
+if (!process.env.RESEND_API_KEY) {
+  console.error('[Contact API] FATAL: RESEND_API_KEY environment variable is not set')
+  console.error('[Contact API] Email functionality will not work until this is configured')
+}
+
+const resend = new Resend(process.env.RESEND_API_KEY || '')
 
 /**
  * Rate limiting store (in-memory for simplicity).
@@ -80,11 +86,20 @@ export async function POST(request: NextRequest) {
 
     // Check if Resend API key is configured
     if (!process.env.RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is not configured')
-      // Return success to user but log the error
+      console.error('[Contact API] Email send attempted but RESEND_API_KEY is not configured')
+      console.error('[Contact API] Submission details:', {
+        name: validated.name,
+        email: validated.email,
+        messageLength: validated.message.length,
+        timestamp: new Date().toISOString(),
+      })
+
+      // Return error to client - fail loudly
       return NextResponse.json(
-        { message: 'Message sent successfully' },
-        { status: 200 }
+        {
+          message: 'Service temporarily unavailable. Please try again later or contact directly via email.',
+        },
+        { status: 503 }
       )
     }
 
@@ -111,18 +126,29 @@ ${validated.message}
         `.trim(),
       })
 
-      console.log('Email sent successfully:', result)
+      console.log('[Contact API] Email sent successfully:', {
+        result: result.data?.id || 'unknown',
+        to: '12kernsmatthew@gmail.com',
+        from: validated.email,
+        timestamp: new Date().toISOString(),
+      })
     } catch (emailError: any) {
       // Log the actual error for debugging
-      console.error('Resend API Error:', {
+      console.error('[Contact API] Resend API Error:', {
         message: emailError?.message,
         statusCode: emailError?.statusCode,
         name: emailError?.name,
-        error: emailError,
+        stack: emailError?.stack,
+        timestamp: new Date().toISOString(),
       })
 
-      // Still return success to user to prevent information disclosure
-      // In production, you might want to save to database as backup
+      // Return error - fail loudly so we know something is wrong
+      return NextResponse.json(
+        {
+          message: 'Failed to send message. Please try again or contact directly via email.',
+        },
+        { status: 500 }
+      )
     }
 
     return NextResponse.json(
@@ -147,7 +173,11 @@ ${validated.message}
     }
 
     // Log error but don't expose details to client
-    console.error('Contact form error:', error)
+    console.error('[Contact API] Unexpected error:', {
+      error: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+      timestamp: new Date().toISOString(),
+    })
 
     // Always return JSON, never throw uncaught errors
     return NextResponse.json(
