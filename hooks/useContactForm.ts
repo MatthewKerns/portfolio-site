@@ -83,8 +83,16 @@ export function useContactForm() {
         })
 
         if (!response.ok) {
-          const error = await response.json()
-          throw new Error(error.message || 'Failed to send message')
+          // Try to parse JSON error, fallback to text if not JSON
+          let errorMessage = 'Failed to send message'
+          try {
+            const error = await response.json()
+            errorMessage = error.message || errorMessage
+          } catch {
+            // Response wasn't JSON, use status text
+            errorMessage = response.statusText || errorMessage
+          }
+          throw new Error(errorMessage)
         }
 
         // Success

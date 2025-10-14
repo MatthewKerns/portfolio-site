@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
 
     // Send email using Resend
     try {
-      await resend.emails.send({
+      const result = await resend.emails.send({
         from: 'Portfolio Contact <onboarding@resend.dev>', // Resend verified sender
         to: '12kernsmatthew@gmail.com',
         replyTo: validated.email,
@@ -100,9 +100,11 @@ ${validated.message}
 <p>${validated.message.replace(/\n/g, '<br>')}</p>
         `.trim(),
       })
+
+      console.log('Email sent successfully:', result)
     } catch (emailError) {
       console.error('Failed to send email:', emailError)
-      // Log but don't fail the request - user shouldn't know if email failed
+      // Still return success to user to prevent information disclosure
       // In production, you might want to save to database as backup
     }
 
