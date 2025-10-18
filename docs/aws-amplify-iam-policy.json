@@ -32,6 +32,18 @@
       ]
     },
     {
+      "Sid": "AmplifyConfigurationAccess",
+      "Effect": "Allow",
+      "Action": [
+        "amplify:UpdateBranch",
+        "amplify:UpdateApp"
+      ],
+      "Resource": [
+        "arn:aws:amplify:us-east-1:836071698725:apps/d2acyy7momhrpf",
+        "arn:aws:amplify:us-east-1:836071698725:apps/d2acyy7momhrpf/*"
+      ]
+    },
+    {
       "Sid": "CloudWatchLogsReadAccess",
       "Effect": "Allow",
       "Action": [

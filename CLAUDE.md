@@ -4,6 +4,33 @@
 
 You are working on a production-quality Next.js portfolio application that showcases software engineering excellence. This document provides guidelines to ensure all code and architectural decisions follow professional software development principles.
 
+## 🚨 MANDATORY: Best Practices Package
+
+**BEFORE making ANY code changes, you MUST:**
+
+1. **Consult the installed best practices guides** located at:
+   ```
+   node_modules/@matthewkerns/software-development-best-practices-guide/
+   ```
+
+2. **Reference the appropriate guide(s) based on your task:**
+   - **API Development** → `api-best-practices.md`
+   - **React Components** → `react-best-practices.md`
+   - **TypeScript** → `typescript-best-practices.md`
+   - **Testing** → `testing-best-practices.md`
+   - **Security** → `security-best-practices.md`
+   - **Performance** → `performance-best-practices.md`
+   - **Accessibility** → `accessibility-best-practices.md`
+   - **Error Handling** → `error-handling-best-practices.md`
+   - **Code Review** → `code-review-checklist.md`
+   - **Git Workflow** → `git-workflow.md`
+
+3. **Before committing, verify against:**
+   - `pre-commit-checklist.md` - Comprehensive pre-commit verification
+   - `code-review-checklist.md` - Self-review standards
+
+**This is NON-NEGOTIABLE. All code must follow these guides.**
+
 ## Core Principles Reference
 
 ### 📚 Foundational Books Applied
@@ -421,7 +448,12 @@ const inter = Inter({
 
 ### 📋 Code Review Checklist
 
-Before committing code, verify:
+**IMPORTANT: Use the comprehensive checklist from the best practices package:**
+```
+node_modules/@matthewkerns/software-development-best-practices-guide/pre-commit-checklist.md
+```
+
+Before committing code, you MUST verify against the package checklists. The basic checklist below is supplementary:
 
 #### Functionality
 - [ ] Feature works as specified
@@ -429,6 +461,7 @@ Before committing code, verify:
 - [ ] Error states managed
 - [ ] Loading states present
 - [ ] Responsive on all screen sizes
+- [ ] **Verified against best practices guides**
 
 #### Code Quality
 - [ ] Functions under 20 lines
@@ -436,24 +469,28 @@ Before committing code, verify:
 - [ ] No commented-out code
 - [ ] No console.logs in production
 - [ ] DRY principle followed
+- [ ] **Follows TypeScript best practices guide**
 
 #### Testing
 - [ ] Unit tests for utilities
 - [ ] Component tests for UI
 - [ ] Error scenarios tested
 - [ ] Accessibility tested
+- [ ] **Follows testing best practices guide**
 
 #### Performance
 - [ ] No unnecessary re-renders
 - [ ] Images optimized
 - [ ] Code split where appropriate
 - [ ] Bundle size checked
+- [ ] **Follows performance best practices guide**
 
 #### Security
 - [ ] Input validated
 - [ ] No sensitive data exposed
 - [ ] XSS prevention in place
 - [ ] CORS configured properly
+- [ ] **Follows security best practices guide**
 
 ### 🛠️ Refactoring Guidelines
 
@@ -575,7 +612,31 @@ This portfolio project demonstrates professional software engineering through:
 - **Clean Architecture** - Clear separation of concerns
 - **SOLID Principles** - Maintainable, extensible code
 - **Design Patterns** - Proven solutions to common problems
-- **Best Practices** - Modern web development standards
+- **Best Practices** - Modern web development standards (enforced via package)
 - **Quality Focus** - Testing, performance, security, accessibility
 
 Always prioritize code readability and maintainability over cleverness. The goal is to create a codebase that any professional developer can understand and extend with confidence.
+
+---
+
+## 🔄 Development Workflow with Best Practices
+
+**EVERY code change MUST follow this workflow:**
+
+1. **📖 Read** - Understand the requirement
+2. **📚 Consult** - Read relevant best practices guide(s) from the package
+3. **✍️ Write** - Implement following the guides
+4. **✅ Verify** - Check against pre-commit-checklist.md
+5. **🧪 Test** - Run tests following testing-best-practices.md
+6. **📝 Commit** - Follow git-workflow.md conventions
+
+**Quick access to guides:**
+```bash
+# List all available guides
+ls node_modules/@matthewkerns/software-development-best-practices-guide/*.md
+
+# Read a specific guide
+cat node_modules/@matthewkerns/software-development-best-practices-guide/[guide-name].md
+```
+
+**Remember: The package guides are the source of truth. These CLAUDE.md guidelines supplement but do NOT replace them.**
