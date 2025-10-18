@@ -43,117 +43,186 @@ export default function PhilosophyPage() {
         </div>
       </section>
 
-      {/* Core Principles */}
+      {/* Core Philosophy */}
+      <section className="space-y-6 rounded-xl border border-border bg-bg-secondary p-8">
+        <h2 className="text-3xl font-bold text-text">Core Philosophy</h2>
+        <div className="space-y-4">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">🎯</span>
+            <div>
+              <h3 className="font-semibold text-text">Foundations First</h3>
+              <p className="text-sm text-text-muted">Master fundamental skills before advancing to complex concepts through progressive learning</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">💡</span>
+            <div>
+              <h3 className="font-semibold text-text">Practical Over Theoretical</h3>
+              <p className="text-sm text-text-muted">Every principle includes real code examples and actionable checklists</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">🌐</span>
+            <div>
+              <h3 className="font-semibold text-text">Multi-Language Mastery</h3>
+              <p className="text-sm text-text-muted">Examples in Python, TypeScript, and Java with language-agnostic principles</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">📈</span>
+            <div>
+              <h3 className="font-semibold text-text">Progressive Learning</h3>
+              <p className="text-sm text-text-muted">Organized from fundamental coding skills to advanced architectural techniques</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Learning Path */}
       <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-text">Core Engineering Principles</h2>
+        <h2 className="text-3xl font-bold text-text">Comprehensive Learning Path</h2>
+        <p className="text-text-muted">
+          My approach to software development is organized into a structured learning path with 37 comprehensive guides
+          covering every aspect of professional software engineering.
+        </p>
 
         <div className="grid gap-6 sm:grid-cols-2">
-          {/* DRY Principle */}
+          {/* Foundations */}
           <div className="space-y-3 rounded-lg border border-border bg-bg-secondary p-6">
             <div className="flex items-center gap-3">
               <FileCode className="h-6 w-6 text-blue" />
-              <h3 className="text-lg font-semibold text-text">Don't Repeat Yourself</h3>
+              <h3 className="text-lg font-semibold text-text">01. Foundations</h3>
             </div>
             <p className="text-sm leading-relaxed text-text-muted">
-              Search existing functionality before writing new code. Use inheritance/composition over duplication.
-              Extract common patterns to utilities. Delete old implementations when refactoring—no compatibility wrappers.
+              7 core guides on variable naming, function design, error handling, code formatting, documentation,
+              defensive programming, and data structures. Start here for fundamental coding excellence.
             </p>
           </div>
 
-          {/* TDD */}
+          {/* Design in Code */}
           <div className="space-y-3 rounded-lg border border-border bg-bg-secondary p-6">
             <div className="flex items-center gap-3">
-              <TestTube className="h-6 w-6 text-blue" />
-              <h3 className="text-lg font-semibold text-text">Test-Driven Development</h3>
+              <GitBranch className="h-6 w-6 text-blue" />
+              <h3 className="text-lg font-semibold text-text">02. Design in Code</h3>
             </div>
             <p className="text-sm leading-relaxed text-text-muted">
-              Write tests first that capture acceptance criteria. Use real components with real dependencies for
-              development tests. Maintain 85%+ integration coverage and 90%+ unit coverage.
+              Construction-level design decisions: routine structure, complexity management, pseudocode programming,
+              and class design principles for maintainable code organization.
             </p>
           </div>
 
           {/* Clean Architecture */}
           <div className="space-y-3 rounded-lg border border-border bg-bg-secondary p-6">
             <div className="flex items-center gap-3">
-              <GitBranch className="h-6 w-6 text-blue" />
-              <h3 className="text-lg font-semibold text-text">Clean Architecture</h3>
+              <Shield className="h-6 w-6 text-blue" />
+              <h3 className="text-lg font-semibold text-text">03. Clean Architecture</h3>
             </div>
             <p className="text-sm leading-relaxed text-text-muted">
-              Clear separation of concerns with dependencies pointing inward. Stable Dependencies Principle:
-              depend on abstractions, not concretions. Each module has one reason to change.
+              SOLID principles, component cohesion and coupling, dependency management, and architectural boundaries
+              that guide system structure and enable scalability.
             </p>
           </div>
 
-          {/* Defensive Programming */}
+          {/* Testing */}
           <div className="space-y-3 rounded-lg border border-border bg-bg-secondary p-6">
             <div className="flex items-center gap-3">
-              <Shield className="h-6 w-6 text-blue" />
-              <h3 className="text-lg font-semibold text-text">Defensive Programming</h3>
+              <TestTube className="h-6 w-6 text-blue" />
+              <h3 className="text-lg font-semibold text-text">04. Quality Through Testing</h3>
             </div>
             <p className="text-sm leading-relaxed text-text-muted">
-              Input validation with proper error boundaries. Fail fast with comprehensive error context.
-              Resource management with timeouts. Structured logging with debugging information.
+              Comprehensive testing strategies including developer testing, unit test principles, TDD workflow,
+              test design patterns, and coverage standards for confident refactoring.
             </p>
           </div>
 
-          {/* Comments & Documentation */}
+          {/* Refactoring */}
           <div className="space-y-3 rounded-lg border border-border bg-bg-secondary p-6">
             <div className="flex items-center gap-3">
               <BookOpen className="h-6 w-6 text-blue" />
-              <h3 className="text-lg font-semibold text-text">Comments Explain Why</h3>
+              <h3 className="text-lg font-semibold text-text">05. Refactoring & Improvement</h3>
             </div>
             <p className="text-sm leading-relaxed text-text-muted">
-              Comments explain WHY, not WHAT. Write comments-first pseudocode before implementation.
-              Include business context for complex decisions. Comprehensive docstrings for all public functions.
+              Systematic approaches to improving existing code: code smell identification, refactoring patterns,
+              safe refactoring workflows, and continuous improvement practices.
             </p>
           </div>
 
-          {/* Code Quality */}
+          {/* Collaboration */}
           <div className="space-y-3 rounded-lg border border-border bg-bg-secondary p-6">
             <div className="flex items-center gap-3">
               <Zap className="h-6 w-6 text-blue" />
-              <h3 className="text-lg font-semibold text-text">Quality Over Speed</h3>
+              <h3 className="text-lg font-semibold text-text">06. Collaborative Construction</h3>
             </div>
             <p className="text-sm leading-relaxed text-text-muted">
-              Type hints everywhere. Self-explanatory variable names. Small functions under 20 lines.
-              Single responsibility per function. Optimize for readability and maintainability.
+              Team practices including effective code reviews, pair programming, collaborative debugging,
+              and systematic integration workflows for high-performing teams.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Repository Stats */}
+      <section className="space-y-6">
+        <h2 className="text-3xl font-bold text-text">Repository Highlights</h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-lg border border-border bg-bg-secondary p-4">
+            <div className="text-sm font-medium text-text-muted">Foundations</div>
+            <div className="text-2xl font-bold text-text">7 Guides</div>
+            <div className="text-xs text-text-muted">36,000+ words</div>
+          </div>
+          <div className="rounded-lg border border-border bg-bg-secondary p-4">
+            <div className="text-sm font-medium text-text-muted">Design & Architecture</div>
+            <div className="text-2xl font-bold text-text">7 Guides</div>
+            <div className="text-xs text-text-muted">43,000+ words</div>
+          </div>
+          <div className="rounded-lg border border-border bg-bg-secondary p-4">
+            <div className="text-sm font-medium text-text-muted">Testing & Quality</div>
+            <div className="text-2xl font-bold text-text">6 Guides</div>
+            <div className="text-xs text-text-muted">20,000+ words</div>
+          </div>
+          <div className="rounded-lg border border-border bg-bg-secondary p-4">
+            <div className="text-sm font-medium text-text-muted">Quick References</div>
+            <div className="text-2xl font-bold text-text">8 Checklists</div>
+            <div className="text-xs text-text-muted">14,000+ words</div>
           </div>
         </div>
       </section>
 
       {/* Key Practices */}
       <section className="space-y-6">
-        <h2 className="text-3xl font-bold text-text">Key Practices</h2>
+        <h2 className="text-3xl font-bold text-text">Implementation Standards</h2>
         <div className="space-y-4 rounded-lg border border-border bg-bg-secondary p-6">
+          <p className="text-sm text-text-muted">
+            Every project following this philosophy adheres to these non-negotiable standards:
+          </p>
           <ul className="space-y-3 text-text-muted">
             <li className="flex gap-3">
-              <span className="text-blue">•</span>
-              <span><strong className="text-text">Pre-Implementation DRY Analysis:</strong> Search for existing similar functionality before writing any new code</span>
+              <span className="text-blue">✓</span>
+              <span><strong className="text-text">Meaningful Names:</strong> Self-documenting variable and function names following language conventions</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-blue">•</span>
-              <span><strong className="text-text">Comments-First Design:</strong> Write complete business logic as comments before implementing</span>
+              <span className="text-blue">✓</span>
+              <span><strong className="text-text">Small Functions:</strong> Functions under 20 lines doing one thing at one abstraction level</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-blue">•</span>
-              <span><strong className="text-text">Development TDD:</strong> Real components + real dependencies for new features and integration</span>
+              <span className="text-blue">✓</span>
+              <span><strong className="text-text">Defensive Programming:</strong> Input validation, proper error boundaries, fail-fast with context</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-blue">•</span>
-              <span><strong className="text-text">Unit TDD:</strong> Real component + mocked dependencies for isolated behavior testing</span>
+              <span className="text-blue">✓</span>
+              <span><strong className="text-text">Test Coverage:</strong> 85%+ integration coverage, 90%+ unit coverage with TDD workflow</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-blue">•</span>
-              <span><strong className="text-text">Async Compliance:</strong> All I/O operations use proper async patterns (critical for scalability)</span>
+              <span className="text-blue">✓</span>
+              <span><strong className="text-text">SOLID Principles:</strong> Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-blue">•</span>
-              <span><strong className="text-text">Security First:</strong> Input validation, proper authentication, secrets management, rate limiting</span>
+              <span className="text-blue">✓</span>
+              <span><strong className="text-text">Comments Explain Why:</strong> Code shows what, comments explain why—pseudocode-first design</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-blue">•</span>
-              <span><strong className="text-text">Complete Replacement Over Compatibility:</strong> When refactoring, replace old implementations entirely—no backwards compatibility wrappers that accumulate technical debt</span>
+              <span className="text-blue">✓</span>
+              <span><strong className="text-text">Continuous Refactoring:</strong> Regular code smell identification and systematic improvement</span>
             </li>
           </ul>
         </div>
@@ -190,12 +259,30 @@ export default function PhilosophyPage() {
       {/* GitHub Repository CTA */}
       <section className="space-y-6 rounded-xl border border-blue/30 bg-blue/10 p-8">
         <h2 className="text-2xl font-semibold text-text">
-          See It In Action
+          📦 Complete Best Practices Guide
         </h2>
         <p className="leading-relaxed text-text-muted">
-          I've documented my complete development philosophy including coding guidelines, best practices, and agent
-          instructions in a comprehensive repository. This includes example CLAUDE.md and copilot-instructions.md files
-          that I use across all my projects.
+          All of these principles are documented in my comprehensive Software Development Best Practices Guide—
+          a 153,000+ word repository with 37 in-depth guides, 8 quick reference checklists, and examples in Python,
+          TypeScript, and Java. Currently at 88% completion with 6 complete sections ready for immediate use.
+        </p>
+        <div className="grid gap-4 text-sm text-text-muted sm:grid-cols-3">
+          <div className="rounded-lg bg-bg p-4">
+            <div className="text-2xl font-bold text-blue">37</div>
+            <div>Comprehensive Guides</div>
+          </div>
+          <div className="rounded-lg bg-bg p-4">
+            <div className="text-2xl font-bold text-blue">153k+</div>
+            <div>Words of Content</div>
+          </div>
+          <div className="rounded-lg bg-bg p-4">
+            <div className="text-2xl font-bold text-blue">88%</div>
+            <div>Complete & Growing</div>
+          </div>
+        </div>
+        <p className="leading-relaxed text-text-muted">
+          Includes example CLAUDE.md and copilot-instructions.md files for AI coding agent integration,
+          ensuring every AI-generated line of code follows professional standards.
         </p>
         <div className="flex flex-col gap-4 sm:flex-row">
           <Link
