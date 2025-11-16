@@ -39,15 +39,24 @@ export default function AboutPage() {
         <div className="mt-8 space-y-6 text-text-muted">
           <p className="text-lg leading-relaxed">
             Software Development Engineer with 7+ years of experience designing and delivering scalable
-            software solutions across e-commerce, cloud systems, and AI-powered automation. Skilled in
-            AWS, React, Node.js, and database work in SQL, with strong software development best practices
-            foundations in OOP, design patterns, and developing clean, observable software.
+            software solutions across e-commerce, cloud systems, and AI-powered automation.
           </p>
+
           <p className="text-lg leading-relaxed">
-            Recently focused on AI chat programming using n8n, LangGraph, and LangChain. I commit to
+            Skilled in AWS, React, Node.js, and SQL databases, with strong software development best
+            practices foundations in object-oriented programming, design patterns, and building clean,
+            observable software.
+          </p>
+
+          <p className="text-lg leading-relaxed">
+            Recently focused on AI chatbot development using n8n, LangGraph, and LangChain. I commit to
             learning whatever frameworks or systems are required to deliver real business value and
-            high-quality software. Every line of code should have a purpose, every component should have
-            clear boundaries, and every system should be built to evolve.
+            high-quality software.
+          </p>
+
+          <p className="text-lg leading-relaxed">
+            Every line of code should have a purpose, every component should have clear boundaries, and
+            every system should be built to evolve.
           </p>
         </div>
 

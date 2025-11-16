@@ -68,21 +68,23 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       </Link>
       <article className="mx-auto max-w-4xl">
         <h1 className="text-4xl font-bold text-text sm:text-5xl">{project.title}</h1>
-        <p className="mt-4 text-lg text-text-muted">{project.summary}</p>
 
-        <div className="mt-6 flex flex-wrap gap-2">
-          {project.tech.map((tech) => (
-            <TechBadge key={tech} name={tech} />
-          ))}
-        </div>
+        {project.wip && (
+          <div className="mt-4 inline-flex items-center rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 text-sm font-medium text-yellow-500">
+            <span className="mr-2">🚧</span>
+            Work in Progress
+          </div>
+        )}
 
-        <div className="mt-8 flex gap-4">
+        <p className="mt-6 text-xl leading-relaxed text-text-muted">{project.summary}</p>
+
+        <div className="mt-8 flex flex-wrap gap-4">
           {project.links.demo && (
             <a
               href={project.links.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg bg-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-dark"
+              className="rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-dark focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2 focus:ring-offset-bg"
             >
               View Live Demo →
             </a>
@@ -91,18 +93,31 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             href={project.links.repo}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg border border-border px-4 py-2 text-sm font-semibold text-text transition-colors hover:border-blue hover:text-blue"
+            className="rounded-lg border border-border px-6 py-3 text-sm font-semibold text-text transition-colors hover:border-blue hover:text-blue focus:outline-none focus:ring-2 focus:ring-border focus:ring-offset-2 focus:ring-offset-bg"
           >
             View on GitHub →
           </a>
         </div>
 
-        <div className="prose prose-invert mt-12 max-w-none">
+        <div className="mt-12 space-y-12">
+          {/* Tech Stack Section */}
+          <div>
+            <h2 className="text-2xl font-bold text-text">Tech Stack</h2>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {project.tech.map((tech) => (
+                <TechBadge key={tech} name={tech} />
+              ))}
+            </div>
+          </div>
+
+          {/* Overview Section */}
           {project.description ? (
-            <>
-              <h2 className="text-2xl font-semibold text-text">Overview</h2>
-              <p className="text-text-muted">{project.description}</p>
-            </>
+            <div>
+              <h2 className="text-2xl font-bold text-text">Overview</h2>
+              <div className="mt-6 space-y-4">
+                <p className="text-lg leading-relaxed text-text-muted">{project.description}</p>
+              </div>
+            </div>
           ) : (
             <div className="rounded-lg border border-border bg-bg-secondary p-8 text-center">
               <p className="text-lg text-text-muted">
