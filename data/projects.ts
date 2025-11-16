@@ -32,6 +32,20 @@ export const projects: Project[] = [
   },
   {
     id: '2',
+    slug: 'infinityvault',
+    title: 'InfinityVault E-Commerce',
+    summary: 'Premium trading card game accessories e-commerce platform with full-stack Next.js and AWS infrastructure.',
+    description: '[Direct Implementation] Full-featured e-commerce platform built as Founder/CEO of InfinityVault, specializing in premium trading card game storage and accessories. Implements modern Next.js architecture with TypeScript, server-side rendering, AWS Amplify hosting, and integrated payment processing. Demonstrates end-to-end product ownership from technical architecture to business operations, including inventory management, order processing, and customer service systems. Built with scalability and performance in mind, serving collectors and TCG enthusiasts.',
+    tech: ['Next.js', 'TypeScript', 'React', 'TailwindCSS', 'AWS Amplify'],
+    image: '/images/infinityvault.jpg',
+    featured: true,
+    links: {
+      demo: 'https://staging.dkwonfsyz1703.amplifyapp.com/',
+      repo: 'https://github.com/username/infinityvault',
+    },
+  },
+  {
+    id: '3',
     slug: 'spring-boot-server',
     title: 'Spring Boot Server (EC2)',
     summary: 'RESTful API with health monitoring, versioning, and echo endpoints. Dockerized with CI/CD pipeline.',
@@ -46,7 +60,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: '3',
+    id: '4',
     slug: 'aws-lambda-serverless',
     title: 'AWS Lambda (Serverless Demo)',
     summary: 'Serverless function returning JSON with Infrastructure as Code via AWS CDK.',
@@ -60,7 +74,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: '4',
+    id: '5',
     slug: 'event-driven-demo',
     title: 'Event-Driven Demo',
     summary: 'SNS + SQS + Lambda pipeline implementing observer pattern with comprehensive IaC.',
@@ -73,7 +87,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: '5',
+    id: '6',
     slug: 'ai-workflow',
     title: 'AI Workflow',
     summary: 'n8n/LangGraph workflow for intelligent extraction and storage with read-only viewer.',
@@ -87,13 +101,13 @@ export const projects: Project[] = [
     },
   },
   {
-    id: '6',
-    slug: 'infinityvault',
+    id: '7',
+    slug: 'infinityvault-internal',
     title: 'InfinityVault Internal Tool',
     summary: 'Real-world automation tool showcasing constraints, outcomes, and lessons learned.',
     description: '[Direct Implementation] Internal chatbot and automation platform built as Founder/CEO of InfinityVault e-commerce brand. Combines AI-powered agents using LangGraph and LangChain with Node.js backend to optimize logistics, workflows, and operational decision-making. Delivers measurable business value through reduced manual work and improved operational efficiency. Demonstrates technical leadership in building scalable data pipelines, system integrations, and tools that directly impact business growth and profitability.',
     tech: ['Node.js', 'TypeScript', 'PostgreSQL', 'Redis', 'Docker'],
-    image: '/images/infinityvault.jpg',
+    image: '/images/infinityvault-internal.jpg',
     wip: true,
     links: {
       repo: 'https://github.com/username/infinityvault-simplified',
