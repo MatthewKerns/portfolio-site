@@ -32,6 +32,9 @@ export default function ProjectsPage() {
 
   const projectListSchema = generateProjectListSchema(projects)
 
+  const currentProjects = projects.filter(p => p.category !== 'past')
+  const pastProjects = projects.filter(p => p.category === 'past')
+
   return (
     <Section>
       <StructuredData data={[breadcrumbs, projectListSchema]} />
@@ -41,18 +44,36 @@ export default function ProjectsPage() {
           A collection of production-quality applications demonstrating expertise in cloud
           architecture, microservices, and modern web development.
         </p>
-        <p className="mt-3 max-w-3xl text-base text-text-muted italic">
-          These projects showcase real expertise from 7+ years of professional software development.
-          Some are direct implementations I&apos;ve built, others demonstrate capabilities I&apos;ve applied
-          in production systems at Amazon and my own companies. Happy to discuss technical details,
-          architecture decisions, and real-world applications during an interview.
+      </div>
+
+      {/* Current Projects Section */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-bold text-text mb-2">Current Projects</h2>
+        <p className="text-text-muted mb-8">
+          Recent work including full-stack applications, AI automation, and e-commerce platforms.
         </p>
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {currentProjects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
+        </div>
       </div>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
-        ))}
-      </div>
+
+      {/* Past Projects Section */}
+      {pastProjects.length > 0 && (
+        <div>
+          <h2 className="text-2xl font-bold text-text mb-2">Past Work at Amazon</h2>
+          <p className="text-text-muted mb-8">
+            Production systems built during 7+ years at Amazon. Code not available, but happy to
+            discuss architecture, design patterns, and lessons learned.
+          </p>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {pastProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
+        </div>
+      )}
     </Section>
   )
 }

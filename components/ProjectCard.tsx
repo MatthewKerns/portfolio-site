@@ -88,30 +88,34 @@ function ProjectCard({
           )}
         </div>
       </Link>
-      <div className="border-t border-border px-6 py-3">
-        <div className="flex items-center gap-4 text-xs">
-          {project.links.demo && (
-            <a
-              href={project.links.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-text-muted transition-colors hover:text-blue"
-              onClick={handleLinkClick}
-            >
-              Live Demo →
-            </a>
-          )}
-          <a
-            href={project.links.repo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-text-muted transition-colors hover:text-blue"
-            onClick={handleLinkClick}
-          >
-            View Code →
-          </a>
+      {(project.links.demo || project.links.repo) && (
+        <div className="border-t border-border px-6 py-3">
+          <div className="flex items-center gap-4 text-xs">
+            {project.links.demo && (
+              <a
+                href={project.links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-text-muted transition-colors hover:text-blue"
+                onClick={handleLinkClick}
+              >
+                Live Demo →
+              </a>
+            )}
+            {project.links.repo && (
+              <a
+                href={project.links.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-text-muted transition-colors hover:text-blue"
+                onClick={handleLinkClick}
+              >
+                View Code →
+              </a>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </motion.article>
   )
 }

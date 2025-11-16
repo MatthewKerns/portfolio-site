@@ -78,26 +78,30 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
         <p className="mt-6 text-xl leading-relaxed text-text-muted">{project.summary}</p>
 
-        <div className="mt-8 flex flex-wrap gap-4">
-          {project.links.demo && (
-            <a
-              href={project.links.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-dark focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2 focus:ring-offset-bg"
-            >
-              View Live Demo →
-            </a>
-          )}
-          <a
-            href={project.links.repo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border border-border px-6 py-3 text-sm font-semibold text-text transition-colors hover:border-blue hover:text-blue focus:outline-none focus:ring-2 focus:ring-border focus:ring-offset-2 focus:ring-offset-bg"
-          >
-            View on GitHub →
-          </a>
-        </div>
+        {(project.links.demo || project.links.repo) && (
+          <div className="mt-8 flex flex-wrap gap-4">
+            {project.links.demo && (
+              <a
+                href={project.links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-dark focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2 focus:ring-offset-bg"
+              >
+                View Live Demo →
+              </a>
+            )}
+            {project.links.repo && (
+              <a
+                href={project.links.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg border border-border px-6 py-3 text-sm font-semibold text-text transition-colors hover:border-blue hover:text-blue focus:outline-none focus:ring-2 focus:ring-border focus:ring-offset-2 focus:ring-offset-bg"
+              >
+                View on GitHub →
+              </a>
+            )}
+          </div>
+        )}
 
         <div className="mt-12 space-y-12">
           {/* Tech Stack Section */}

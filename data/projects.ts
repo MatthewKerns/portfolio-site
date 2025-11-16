@@ -8,9 +8,10 @@ export interface Project {
   image: string
   featured?: boolean
   wip?: boolean
+  category?: 'current' | 'past'
   links: {
     demo?: string
-    repo: string
+    repo?: string
   }
 }
 
@@ -60,47 +61,6 @@ export const projects: Project[] = [
   },
   {
     id: '4',
-    slug: 'spring-boot-server',
-    title: 'Spring Boot Server (EC2)',
-    summary: 'RESTful API with health monitoring, versioning, and echo endpoints. Dockerized with CI/CD pipeline.',
-    description: '[Professional Capability Showcase] Demonstrates production-grade Spring Boot and AWS EC2 expertise applied across multiple backend services at Amazon. This showcase reflects operational excellence practices including health monitoring, Docker containerization, CI/CD pipelines, and oncall-ready architecture with proper logging and metrics instrumentation—capabilities proven through 3+ years of OPEX and production service ownership on Entity Resolver Service, Live Cards pipeline, and cross-team integrations.',
-    tech: ['Spring Boot', 'Java', 'Docker', 'AWS EC2', 'GitHub Actions'],
-    image: '/images/spring-boot.jpg',
-    wip: true,
-    links: {
-      demo: 'https://api.example.com/health',
-      repo: 'https://github.com/username/spring-boot-server',
-    },
-  },
-  {
-    id: '5',
-    slug: 'aws-lambda-serverless',
-    title: 'AWS Lambda (Serverless Demo)',
-    summary: 'Serverless function returning JSON with Infrastructure as Code via AWS CDK.',
-    description: '[Professional Capability Showcase] Demonstrates serverless architecture and Infrastructure as Code expertise applied to production systems at Amazon. This showcase reflects AWS Lambda, API Gateway, and CDK proficiency gained from building scalable backend services including the Live Cards AWS pipeline and Alexa for Apps server-side architecture. Represents cloud-native best practices including managed services, serverless compute patterns, and automated infrastructure deployment proven in production environments.',
-    tech: ['AWS Lambda', 'TypeScript', 'AWS CDK', 'API Gateway'],
-    image: '/images/lambda.jpg',
-    featured: true,
-    wip: true,
-    links: {
-      repo: 'https://github.com/username/lambda-demo',
-    },
-  },
-  {
-    id: '6',
-    slug: 'event-driven-demo',
-    title: 'Event-Driven Demo',
-    summary: 'SNS + SQS + Lambda pipeline implementing observer pattern with comprehensive IaC.',
-    description: '[Professional Capability Showcase] Demonstrates event-driven architecture and messaging patterns applied to production systems at Amazon. This showcase reflects expertise in decoupled microservices communication, SNS/SQS messaging, and Infrastructure as Code gained from designing the Entity Resolver Service backend and coordinating cross-team integrations for Alexa for Apps. Represents proven ability to build systems with proper traceability, observability, and error handling at scale.',
-    tech: ['AWS SNS', 'AWS SQS', 'Lambda', 'CDK', 'TypeScript'],
-    image: '/images/event-driven.jpg',
-    wip: true,
-    links: {
-      repo: 'https://github.com/username/event-driven-demo',
-    },
-  },
-  {
-    id: '7',
     slug: 'ai-workflow',
     title: 'Real Estate Chatbot (In Progress)',
     summary: 'AI-powered chatbot for real estate operations with automated invoice and receipt processing using n8n/LangGraph.',
@@ -113,16 +73,47 @@ export const projects: Project[] = [
     },
   },
   {
-    id: '8',
+    id: '5',
     slug: 'infinityvault-internal',
-    title: 'InfinityVault Internal Tool',
-    summary: 'Real-world automation tool showcasing constraints, outcomes, and lessons learned.',
-    description: '[Direct Implementation] Internal chatbot and automation platform built as Founder/CEO of InfinityVault e-commerce brand. Combines AI-powered agents using LangGraph and LangChain with Node.js backend to optimize logistics, workflows, and operational decision-making. Delivers measurable business value through reduced manual work and improved operational efficiency. Demonstrates technical leadership in building scalable data pipelines, system integrations, and tools that directly impact business growth and profitability.',
-    tech: ['Node.js', 'TypeScript', 'PostgreSQL', 'Redis', 'Docker'],
+    title: 'InfinityVault Internal Tools',
+    summary: 'Suite of automation tools under development for e-commerce operations, logistics, and workflow optimization.',
+    description: '[Direct Implementation - In Progress] Suite of internal automation tools being developed as Founder/CEO of InfinityVault e-commerce brand. Building multiple AI-powered systems using LangGraph and LangChain with Node.js backend to optimize logistics, inventory management, customer service workflows, and operational decision-making. Tools include: competitor listing scraping and analysis, daily and weekly planning agent for operational tasks, AI operations management board for workflow orchestration, and communication automation system to identify and prioritize required communications with suppliers, graphic designers, and account management team. Delivers measurable business value through reduced manual work and improved operational efficiency. Demonstrates technical leadership in building scalable data pipelines, system integrations, and real-world tools that directly impact business growth and profitability.',
+    tech: ['Node.js', 'TypeScript', 'PostgreSQL', 'Redis', 'Docker', 'LangGraph', 'LangChain'],
     image: '/images/infinityvault-internal.jpg',
     wip: true,
-    links: {
-      repo: 'https://github.com/username/infinityvault-simplified',
-    },
+    links: {},
+  },
+  {
+    id: '6',
+    slug: 'spring-boot-server',
+    title: 'Spring Boot Server (EC2)',
+    summary: 'RESTful API with health monitoring, versioning, and echo endpoints. Dockerized with CI/CD pipeline.',
+    description: '[Amazon Work - Code Not Available] Production-grade Spring Boot backend services built during 7+ years at Amazon. Applied operational excellence practices including health monitoring, Docker containerization, CI/CD pipelines, and oncall-ready architecture with proper logging and metrics instrumentation. Proven through 3+ years of OPEX and production service ownership on Entity Resolver Service, Live Cards pipeline, and cross-team integrations. Happy to discuss architecture, design patterns, and lessons learned from building scalable backend systems.',
+    tech: ['Spring Boot', 'Java', 'Docker', 'AWS EC2', 'GitHub Actions'],
+    image: '/images/spring-boot.jpg',
+    category: 'past',
+    links: {},
+  },
+  {
+    id: '7',
+    slug: 'aws-lambda-serverless',
+    title: 'AWS Lambda (Serverless)',
+    summary: 'Serverless functions with Infrastructure as Code via AWS CDK for production AWS pipelines.',
+    description: '[Amazon Work - Code Not Available] Serverless architecture and Infrastructure as Code expertise applied to production systems at Amazon. Built scalable backend services including the Live Cards AWS pipeline and Alexa for Apps server-side architecture using AWS Lambda, API Gateway, and CDK. Represents cloud-native best practices including managed services, serverless compute patterns, and automated infrastructure deployment proven in production environments. Happy to discuss serverless patterns, IaC strategies, and production architecture decisions.',
+    tech: ['AWS Lambda', 'TypeScript', 'AWS CDK', 'API Gateway'],
+    image: '/images/lambda.jpg',
+    category: 'past',
+    links: {},
+  },
+  {
+    id: '8',
+    slug: 'event-driven-demo',
+    title: 'Event-Driven Architecture',
+    summary: 'SNS + SQS + Lambda pipeline implementing decoupled microservices with comprehensive observability.',
+    description: '[Amazon Work - Code Not Available] Event-driven architecture and messaging patterns applied to production systems at Amazon. Expertise in decoupled microservices communication, SNS/SQS messaging, and Infrastructure as Code gained from designing the Entity Resolver Service backend and coordinating cross-team integrations for Alexa for Apps. Proven ability to build systems with proper traceability, observability, and error handling at scale. Happy to discuss event-driven patterns, system design, and production reliability practices.',
+    tech: ['AWS SNS', 'AWS SQS', 'Lambda', 'CDK', 'TypeScript'],
+    image: '/images/event-driven.jpg',
+    category: 'past',
+    links: {},
   },
 ]
