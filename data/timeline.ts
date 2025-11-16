@@ -7,16 +7,16 @@ export interface TimelineItem {
 
 export const timeline: TimelineItem[] = [
   {
-    year: '2024 - Present',
+    year: 'Oct 2025 - Present',
+    title: 'DataAnnotation Task work',
+    company: 'DataAnnotation',
+    description: 'Dockerizing codebases in various languages (Rust, TypeScript, Python, Go) for coding agent containerized workflows. Analyzing coding agent loss patterns between Claude and Cursor agents. Identifying specific areas where AI chat applications do not return accurate responses.',
+  },
+  {
+    year: 'Apr 2025 - Present',
     title: 'Co-Founder & Automation Developer',
     company: 'Ascension AI',
     description: 'Designing AI-powered data pipelines for invoice/receipt processing using LangChain, LangGraph, n8n, and Make.com. Building RAG-enabled agents with chat model switching (OpenAI, LlaMA, Qwen) and applying AWS cloud-native best practices.',
-  },
-  {
-    year: '2024 - Present',
-    title: 'AI Training Contributor',
-    company: 'DataAnnotation',
-    description: 'Dockerizing codebases in various languages (Rust, TypeScript, Python, Go) for coding agent containerized workflows.',
   },
   {
     year: '2022 - Present',

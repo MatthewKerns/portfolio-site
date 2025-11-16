@@ -78,12 +78,59 @@ export default function PhilosophyPage() {
         </div>
       </section>
 
-      {/* Learning Path */}
+      {/* GitHub Repository CTA */}
+      <section className="space-y-6 rounded-xl border border-blue/30 bg-blue/10 p-8">
+        <h2 className="text-2xl font-semibold text-text">
+          📦 Complete Best Practices Guide
+        </h2>
+        <p className="leading-relaxed text-text-muted">
+          All of these principles are documented in my comprehensive Software Development Best Practices Guide—
+          a 450,000+ word repository with 80+ in-depth guides across 10 categories, 8 quick reference checklists,
+          and examples in Python, TypeScript, and Java. 9 of 10 sections complete with continuous updates.
+        </p>
+        <div className="grid gap-4 text-sm text-text-muted sm:grid-cols-3">
+          <div className="rounded-lg bg-bg p-4">
+            <div className="text-2xl font-bold text-blue">80+</div>
+            <div>Comprehensive Guides</div>
+          </div>
+          <div className="rounded-lg bg-bg p-4">
+            <div className="text-2xl font-bold text-blue">450k+</div>
+            <div>Words of Content</div>
+          </div>
+          <div className="rounded-lg bg-bg p-4">
+            <div className="text-2xl font-bold text-blue">10</div>
+            <div>Complete Categories</div>
+          </div>
+        </div>
+        <p className="leading-relaxed text-text-muted">
+          Includes example CLAUDE.md and copilot-instructions.md files for AI coding agent integration,
+          ensuring every AI-generated line of code follows professional standards.
+        </p>
+        <div className="flex flex-col gap-4 sm:flex-row">
+          <Link
+            href="https://github.com/MatthewKerns/software-development-best-practices-guide"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue px-6 py-3 font-medium text-bg transition-colors hover:bg-blue-light"
+          >
+            <GitBranch className="h-5 w-5" />
+            View Best Practices Guide
+          </Link>
+          <Link
+            href="/projects"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-bg-secondary px-6 py-3 font-medium text-text transition-colors hover:border-blue/50"
+          >
+            See Projects
+          </Link>
+        </div>
+      </section>
+
+      {/* Best Practices Guide Overview */}
       <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-text">Comprehensive Learning Path</h2>
+        <h2 className="text-3xl font-bold text-text">Best Practices Guide Overview</h2>
         <p className="text-text-muted">
-          My approach to software development is organized into a structured learning path with 37 comprehensive guides
-          covering every aspect of professional software engineering.
+          My approach to software development is organized into a structured learning path with 80+ comprehensive guides
+          across 10 categories covering every aspect of professional software engineering.
         </p>
 
         <div className="grid gap-6 sm:grid-cols-2">
@@ -158,32 +205,53 @@ export default function PhilosophyPage() {
               and systematic integration workflows for high-performing teams.
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* Repository Stats */}
-      <section className="space-y-6">
-        <h2 className="text-3xl font-bold text-text">Repository Highlights</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-lg border border-border bg-bg-secondary p-4">
-            <div className="text-sm font-medium text-text-muted">Foundations</div>
-            <div className="text-2xl font-bold text-text">7 Guides</div>
-            <div className="text-xs text-text-muted">36,000+ words</div>
+          {/* Agentic Coding */}
+          <div className="space-y-3 rounded-lg border border-border bg-bg-secondary p-6">
+            <div className="flex items-center gap-3">
+              <Zap className="h-6 w-6 text-blue" />
+              <h3 className="text-lg font-semibold text-text">07. Agentic Coding</h3>
+            </div>
+            <p className="text-sm leading-relaxed text-text-muted">
+              AI-assisted development with Claude Code and GitHub Copilot, including prompt engineering,
+              code review integration, and maintaining quality standards with AI tools.
+            </p>
           </div>
-          <div className="rounded-lg border border-border bg-bg-secondary p-4">
-            <div className="text-sm font-medium text-text-muted">Design & Architecture</div>
-            <div className="text-2xl font-bold text-text">7 Guides</div>
-            <div className="text-xs text-text-muted">43,000+ words</div>
+
+          {/* Project Management */}
+          <div className="space-y-3 rounded-lg border border-border bg-bg-secondary p-6">
+            <div className="flex items-center gap-3">
+              <BookOpen className="h-6 w-6 text-blue" />
+              <h3 className="text-lg font-semibold text-text">08. Project Management</h3>
+            </div>
+            <p className="text-sm leading-relaxed text-text-muted">
+              Software project lifecycle management, estimation techniques, risk management,
+              and agile methodologies for successful project delivery.
+            </p>
           </div>
-          <div className="rounded-lg border border-border bg-bg-secondary p-4">
-            <div className="text-sm font-medium text-text-muted">Testing & Quality</div>
-            <div className="text-2xl font-bold text-text">6 Guides</div>
-            <div className="text-xs text-text-muted">20,000+ words</div>
+
+          {/* Production Readiness */}
+          <div className="space-y-3 rounded-lg border border-border bg-bg-secondary p-6">
+            <div className="flex items-center gap-3">
+              <Shield className="h-6 w-6 text-blue" />
+              <h3 className="text-lg font-semibold text-text">09. Production Readiness</h3>
+            </div>
+            <p className="text-sm leading-relaxed text-text-muted">
+              Comprehensive production deployment practices including monitoring, security, performance optimization,
+              disaster recovery, and operational excellence for production systems.
+            </p>
           </div>
-          <div className="rounded-lg border border-border bg-bg-secondary p-4">
-            <div className="text-sm font-medium text-text-muted">Quick References</div>
-            <div className="text-2xl font-bold text-text">8 Checklists</div>
-            <div className="text-xs text-text-muted">14,000+ words</div>
+
+          {/* Geist Gap Analysis */}
+          <div className="space-y-3 rounded-lg border border-border bg-bg-secondary p-6">
+            <div className="flex items-center gap-3">
+              <FileCode className="h-6 w-6 text-blue" />
+              <h3 className="text-lg font-semibold text-text">10. Geist Gap Analysis Framework</h3>
+            </div>
+            <p className="text-sm leading-relaxed text-text-muted">
+              Three-dimensional problem analysis framework: Ghost (parallel realities), Geyser (dynamic forces),
+              and Gist (essential core) for comprehensive understanding of complex problems.
+            </p>
           </div>
         </div>
       </section>
@@ -253,53 +321,6 @@ export default function PhilosophyPage() {
               What's the irreducible essence of what we're building? Am I solving the essential problem or getting distracted?
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* GitHub Repository CTA */}
-      <section className="space-y-6 rounded-xl border border-blue/30 bg-blue/10 p-8">
-        <h2 className="text-2xl font-semibold text-text">
-          📦 Complete Best Practices Guide
-        </h2>
-        <p className="leading-relaxed text-text-muted">
-          All of these principles are documented in my comprehensive Software Development Best Practices Guide—
-          a 153,000+ word repository with 37 in-depth guides, 8 quick reference checklists, and examples in Python,
-          TypeScript, and Java. Currently at 88% completion with 6 complete sections ready for immediate use.
-        </p>
-        <div className="grid gap-4 text-sm text-text-muted sm:grid-cols-3">
-          <div className="rounded-lg bg-bg p-4">
-            <div className="text-2xl font-bold text-blue">37</div>
-            <div>Comprehensive Guides</div>
-          </div>
-          <div className="rounded-lg bg-bg p-4">
-            <div className="text-2xl font-bold text-blue">153k+</div>
-            <div>Words of Content</div>
-          </div>
-          <div className="rounded-lg bg-bg p-4">
-            <div className="text-2xl font-bold text-blue">88%</div>
-            <div>Complete & Growing</div>
-          </div>
-        </div>
-        <p className="leading-relaxed text-text-muted">
-          Includes example CLAUDE.md and copilot-instructions.md files for AI coding agent integration,
-          ensuring every AI-generated line of code follows professional standards.
-        </p>
-        <div className="flex flex-col gap-4 sm:flex-row">
-          <Link
-            href="https://github.com/MatthewKerns/software-development-best-practices-guide"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue px-6 py-3 font-medium text-bg transition-colors hover:bg-blue-light"
-          >
-            <GitBranch className="h-5 w-5" />
-            View Best Practices Guide
-          </Link>
-          <Link
-            href="/projects"
-            className="inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-bg-secondary px-6 py-3 font-medium text-text transition-colors hover:border-blue/50"
-          >
-            See Projects
-          </Link>
         </div>
       </section>
 
