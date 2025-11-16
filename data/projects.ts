@@ -18,8 +18,8 @@ export const projects: Project[] = [
   {
     id: '1',
     slug: 'portfolio',
-    title: 'Portfolio (Next.js)',
-    summary: 'This Site - Modern portfolio showcasing structure, design, accessibility, and SEO best practices.',
+    title: 'My Portfolio Website (This One)',
+    summary: 'Modern portfolio showcasing structure, design, accessibility, and SEO best practices.',
     description: '[Direct Implementation] This portfolio site demonstrates Clean Architecture principles and component-based design patterns learned from 7+ years at Amazon. Built with TypeScript strict mode for type safety, responsive UI following AWS best practices, and optimized for Lighthouse 90+ scores across all categories. Emphasizes maintainable code structure with clear separation of concerns (data/components/application layers) and accessibility-first design.',
     tech: ['Next.js', 'TypeScript', 'TailwindCSS', 'Framer Motion', 'AWS Amplify'],
     image: '/images/portfolio.jpg',
@@ -102,8 +102,8 @@ export const projects: Project[] = [
   {
     id: '7',
     slug: 'ai-workflow',
-    title: 'AI Workflow',
-    summary: 'n8n/LangGraph workflow for intelligent extraction and storage with read-only viewer.',
+    title: 'Real Estate GM Invoice and Receipts Processing AI Automation Workflow',
+    summary: 'Automated invoice and receipt processing for real estate projects using n8n/LangGraph with intelligent extraction and storage.',
     description: '[Direct Implementation] AI-powered email attachment processing workflow built as Ascension AI co-founder, automating invoice and receipt extraction for real estate projects. Implements LangChain, LangGraph, and n8n with RAG-enabled agents featuring chat model switching (OpenAI, LlaMA, Qwen) for cost optimization. Includes safety constraints, error handling, PostgreSQL data storage, and read-only viewer interface—delivering measurable business value through intelligent document processing and natural language querying capabilities.',
     tech: ['n8n', 'LangGraph', 'OpenAI API', 'PostgreSQL', 'Next.js'],
     image: '/images/ai-workflow.jpg',
