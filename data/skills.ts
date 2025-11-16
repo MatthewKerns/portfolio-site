@@ -10,7 +10,7 @@ export const skills: Skill[] = [
   },
   {
     category: 'Backend',
-    items: ['Spring Boot', 'Node.js', 'Python', 'Java', 'Kotlin', 'SQL', 'NoSQL'],
+    items: ['Spring Boot', 'Node.js', 'Python', 'Java', 'Kotlin', 'SQL', 'NoSQL', 'Clerk'],
   },
   {
     category: 'Cloud & DevOps',
@@ -22,7 +22,7 @@ export const skills: Skill[] = [
   },
   {
     category: 'Databases',
-    items: ['PostgreSQL (Neon)', 'DynamoDB', 'SQL', 'NoSQL'],
+    items: ['Convex', 'PostgreSQL (Neon)', 'DynamoDB', 'SQL', 'NoSQL'],
   },
   {
     category: 'Other',
