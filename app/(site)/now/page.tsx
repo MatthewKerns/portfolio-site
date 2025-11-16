@@ -1,13 +1,36 @@
 import Section from '@/components/Section'
+import { siteConfig } from '@/lib/seo'
+import type { Metadata } from 'next'
+import { StructuredData, generateBreadcrumbSchema } from '@/lib/structured-data'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Now',
-  description: 'What I am focused on at this point in my life.',
+  description: 'Current focus: building AWS cloud systems, AI automation with LangGraph, and exploring serverless architecture. Updated regularly with current projects and learning goals.',
+  openGraph: {
+    title: 'What I\'m Doing Now - Matthew Kerns',
+    description: 'Current focus on AWS cloud systems, AI automation, and serverless architecture',
+    url: `${siteConfig.url}/now`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'What I\'m Doing Now',
+    description: 'Current software engineering focus and projects',
+  },
+  alternates: {
+    canonical: '/now',
+  },
 }
 
 export default function NowPage() {
+  const breadcrumbs = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Now', url: '/now' },
+  ])
+
   return (
     <Section>
+      <StructuredData data={breadcrumbs} />
       <div className="mx-auto max-w-3xl">
         <h1 className="text-4xl font-bold text-text sm:text-5xl">Now</h1>
         <p className="mt-4 text-lg text-text-muted">

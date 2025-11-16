@@ -4,6 +4,27 @@ import ProjectCard from '@/components/ProjectCard'
 import Link from 'next/link'
 import { ROUTES, APP_CONFIG } from '@/lib/constants'
 import { projects } from '@/data/projects'
+import { siteConfig } from '@/lib/seo'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Home',
+  description: siteConfig.description,
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
+  alternates: {
+    canonical: '/',
+  },
+}
 
 /**
  * Homepage component.

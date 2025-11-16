@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import ErrorBoundary from '@/components/ErrorBoundary'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import { siteConfig } from '@/lib/seo'
+import { StructuredData, generatePersonSchema, generateWebSiteSchema } from '@/lib/structured-data'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -42,6 +43,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: siteConfig.description,
+    creator: '@MatthewKerns', // Update with your actual Twitter handle
+    images: [siteConfig.ogImage],
+  },
   robots: {
     index: true,
     follow: true,
@@ -68,6 +76,11 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <StructuredData data={[generatePersonSchema(), generateWebSiteSchema()]} />
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col bg-bg text-text antialiased`}>
         <GoogleAnalytics />

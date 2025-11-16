@@ -3,6 +3,8 @@ import Link from 'next/link'
 import Section from '@/components/Section'
 import TechBadge from '@/components/TechBadge'
 import { projects } from '@/data/projects'
+import { siteConfig } from '@/lib/seo'
+import { StructuredData, generateBreadcrumbSchema, generateProjectSchema } from '@/lib/structured-data'
 
 interface ProjectPageProps {
   params: {
@@ -23,6 +25,20 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   return {
     title: project.title,
     description: project.description || project.summary,
+    openGraph: {
+      title: `${project.title} - Matthew Kerns`,
+      description: project.summary,
+      url: `${siteConfig.url}/projects/${project.slug}`,
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary',
+      title: project.title,
+      description: project.summary,
+    },
+    alternates: {
+      canonical: `/projects/${project.slug}`,
+    },
   }
 }
 
@@ -33,8 +49,17 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     notFound()
   }
 
+  const breadcrumbs = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Projects', url: '/projects' },
+    { name: project.title, url: `/projects/${project.slug}` },
+  ])
+
+  const projectSchema = generateProjectSchema(project)
+
   return (
     <Section>
+      <StructuredData data={[breadcrumbs, projectSchema]} />
       <Link
         href="/projects"
         className="mb-8 inline-flex items-center text-sm text-text-muted transition-colors hover:text-blue"

@@ -1,15 +1,40 @@
 import Section from '@/components/Section'
 import ProjectCard from '@/components/ProjectCard'
 import { projects } from '@/data/projects'
+import { siteConfig } from '@/lib/seo'
+import type { Metadata } from 'next'
+import { StructuredData, generateBreadcrumbSchema, generateProjectListSchema } from '@/lib/structured-data'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Projects',
-  description: 'Portfolio of software engineering projects showcasing modern web development.',
+  description: 'Portfolio of AWS cloud systems, AI automation, and full-stack applications. Production-quality projects using React, Node.js, Spring Boot, LangGraph, and serverless architecture.',
+  openGraph: {
+    title: 'Software Engineering Projects - Matthew Kerns',
+    description: 'Explore cloud architecture, microservices, and AI automation projects built with modern tech stacks.',
+    url: `${siteConfig.url}/projects`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Software Engineering Projects',
+    description: 'AWS cloud systems, AI automation, and production applications',
+  },
+  alternates: {
+    canonical: '/projects',
+  },
 }
 
 export default function ProjectsPage() {
+  const breadcrumbs = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Projects', url: '/projects' },
+  ])
+
+  const projectListSchema = generateProjectListSchema(projects)
+
   return (
     <Section>
+      <StructuredData data={[breadcrumbs, projectListSchema]} />
       <div className="mb-12">
         <h1 className="text-4xl font-bold text-text sm:text-5xl">Projects</h1>
         <p className="mt-4 max-w-3xl text-lg text-text-muted">

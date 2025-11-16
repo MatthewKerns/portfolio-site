@@ -1,15 +1,38 @@
 import Section from '@/components/Section'
 import { skills } from '@/data/skills'
 import { timeline } from '@/data/timeline'
+import { siteConfig } from '@/lib/seo'
+import type { Metadata } from 'next'
+import { StructuredData, generateBreadcrumbSchema } from '@/lib/structured-data'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'About',
-  description: 'Learn more about my background, skills, and experience.',
+  description: 'Software Development Engineer with 7+ years building scalable AWS systems, AI automation, and production applications. Expert in React, Node.js, Spring Boot, and cloud architecture.',
+  openGraph: {
+    title: 'About Matthew Kerns',
+    description: 'Learn about my 7+ years of experience in software engineering, cloud architecture, and AI automation.',
+    url: `${siteConfig.url}/about`,
+    type: 'profile',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'About Matthew Kerns',
+    description: 'Software engineer specializing in AWS, React, and AI automation',
+  },
+  alternates: {
+    canonical: '/about',
+  },
 }
 
 export default function AboutPage() {
+  const breadcrumbs = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'About', url: '/about' },
+  ])
+
   return (
     <Section>
+      <StructuredData data={breadcrumbs} />
       <div className="mx-auto max-w-4xl">
         <h1 className="text-4xl font-bold text-text sm:text-5xl">About</h1>
 
