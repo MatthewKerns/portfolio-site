@@ -102,15 +102,14 @@ export const projects: Project[] = [
   {
     id: '7',
     slug: 'ai-workflow',
-    title: 'Real Estate GM Invoice and Receipts Processing AI Automation Workflow',
-    summary: 'Automated invoice and receipt processing for real estate projects using n8n/LangGraph with intelligent extraction and storage.',
-    description: '[Direct Implementation] AI-powered email attachment processing workflow built as Ascension AI co-founder, automating invoice and receipt extraction for real estate projects. Implements LangChain, LangGraph, and n8n with RAG-enabled agents featuring chat model switching (OpenAI, LlaMA, Qwen) for cost optimization. Includes safety constraints, error handling, PostgreSQL data storage, and read-only viewer interface—delivering measurable business value through intelligent document processing and natural language querying capabilities.',
+    title: 'Real Estate Chatbot (In Progress)',
+    summary: 'AI-powered chatbot for real estate operations with automated invoice and receipt processing using n8n/LangGraph.',
+    description: '[Direct Implementation] AI-powered chatbot platform built as Ascension AI co-founder for real estate operations and automation. The invoice and receipts processing workflow is currently working and undergoing user testing, automating email attachment extraction for real estate projects. Implements LangChain, LangGraph, and n8n with RAG-enabled agents featuring chat model switching (OpenAI, LlaMA, Qwen) for cost optimization. Includes safety constraints, error handling, PostgreSQL data storage, and read-only viewer interface—delivering measurable business value through intelligent document processing and natural language querying capabilities.',
     tech: ['n8n', 'LangGraph', 'OpenAI API', 'PostgreSQL', 'Next.js'],
     image: '/images/ai-workflow.jpg',
     wip: true,
     links: {
-      demo: 'https://ai-workflow.example.com',
-      repo: 'https://github.com/username/ai-workflow',
+      repo: 'https://github.com/MatthewKerns/RealEstateChatbot',
     },
   },
   {
