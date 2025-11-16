@@ -25,6 +25,9 @@ export const metadata: Metadata = {
 }
 
 export default function ProjectsPage() {
+  // TODO: Set to true when ready to show Amazon past work
+  const SHOW_PAST_WORK = false
+
   const breadcrumbs = generateBreadcrumbSchema([
     { name: 'Home', url: '/' },
     { name: 'Projects', url: '/projects' },
@@ -60,7 +63,7 @@ export default function ProjectsPage() {
       </div>
 
       {/* Past Projects Section */}
-      {pastProjects.length > 0 && (
+      {SHOW_PAST_WORK && pastProjects.length > 0 && (
         <div>
           <h2 className="text-2xl font-bold text-text mb-2">Past Work at Amazon</h2>
           <p className="text-text-muted mb-8">
